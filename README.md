@@ -2,11 +2,13 @@
 
 # VAGRANT CLOUD
 
-https://app.vagrantup.com/mcandre/boxes/vagrant-windows-rust
+* https://app.vagrantup.com/mcandre/boxes/vagrant-windows-rust-amd64
+* https://app.vagrantup.com/mcandre/boxes/vagrant-windows-rust-i386
 
 # EXAMPLE
 
 ```console
+$ cd test/amd64
 $ vagrant up
 $ vagrant ssh --no-tty -c "powershell -Command \"cd C:\\vagrant; rustc hello.rs; .\hello\""
 Hello World!
@@ -30,5 +32,6 @@ Hello World!
 # EXPORT
 
 ```console
-$ make vagrant-windows-rust.box
+$ sh -c "cd amd64 && make vagrant-windows-rust-amd64.box"
+$ sh -c "cd i386 && make vagrant-windows-rust-i386.box"
 ```

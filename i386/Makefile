@@ -1,4 +1,6 @@
-BOX=vagrant-windows-rust.box
+BOX_NAMESPACE=mcandre
+BOX_BASENAME=vagrant-windows-rust-i386
+BOX=$(BOX_BASENAME).box
 
 .PHONY: launch-vm clean-vm clean-boxes clean-vagrant-metadata
 
@@ -21,3 +23,6 @@ clean: clean-boxes clean-vm clean-vagrant-metadata
 
 $(BOX): export.Vagrantfile clean launch-vm
 	vagrant package --output $(BOX) --vagrantfile export.Vagrantfile
+
+import: $(BOX)
+	vagrant box add --force --name $(BOX_NAMESPACE)/$(BOX_BASENAME) $(BOX)

@@ -7,9 +7,6 @@ BOX=$(BOX_BASENAME).box
 launch-vm: Vagrantfile bootstrap.ps1
 	vagrant up
 
-test: launch-vm
-	vagrant ssh --no-tty -c "powershell -Command \"cd C:\\vagrant; rustc hello.rs; .\hello\""
-
 clean-vm:
 	-vagrant destroy -f
 
